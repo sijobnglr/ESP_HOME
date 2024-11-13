@@ -1,0 +1,29 @@
+esphome:
+  name: pico_w_pin_storage
+
+# Enable logging for debug
+logger:
+
+# Enable the Raspberry Pi Pico W board
+esp32:
+  board: raspberry-pi-pico-w
+  framework:
+    type: esp-idf
+
+# WiFi Setup
+wifi:
+  ssid: "Your_SSID"
+  password: "Your_PASSWORD"
+
+# Example of output pin (GPIO Pin 5)
+output:
+  - platform: gpio
+    id: gpio_pin
+    pin: 5
+    restore_value: true    # Save the pin state to flash
+
+# Switch to control the GPIO pin
+switch:
+  - platform: output
+    name: "Pin Switch"
+    output: gpio_pin
